@@ -1,0 +1,22 @@
+var express = require('express');
+var app = express();
+var grr = {};
+
+app.get('/search', function(req, res){
+    grr.results = req.query.results;
+    grr.type = req.query.type;
+    grr.page = req.query.page;
+    
+    res.end(JSON.stringify(grr));
+    
+    });
+
+app.listen(process.argv[2]);
+
+
+// buggy solution code doesnt work!
+
+// app.get('/search', function(req, res){
+//       var query = req.query
+//       res.send(query)
+//     })
