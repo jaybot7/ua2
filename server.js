@@ -26,7 +26,7 @@ app.use(requestLanguage({
 
 // Add some middleware
 app.all("*", function(request, response, next) {
-  var ipaddress = request.ip;
+  var ipaddress = request.headers['x-forwarded-for'] || req.connection.remoteAddress;
   var ua = request.useragent;
   var lang = request.language;
   var mapper = {"ipaddress":"",
